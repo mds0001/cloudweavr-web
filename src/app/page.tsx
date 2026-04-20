@@ -35,7 +35,7 @@ export default function Home() {
       {/* Nav */}
       <nav style={{ borderBottom: "1px solid #1f2937", padding: "0 24px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <a href="https://threads.cloudweavr.com" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", opacity: 1 }} onMouseOver={e => (e.currentTarget.style.opacity = "0.8")} onMouseOut={e => (e.currentTarget.style.opacity = "1")}>
+          <a href="https://threads.cloudweavr.com" className="nav-logo-link" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
             <div style={{ width: 32, height: 32, borderRadius: 8, background: "linear-gradient(135deg,#00c8ff,#6366f1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
