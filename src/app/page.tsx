@@ -8,6 +8,7 @@ export default function Home() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [annual, setAnnual] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -44,6 +45,7 @@ export default function Home() {
             <span style={{ fontWeight: 700, fontSize: 16, color: "#f1f5f9" }}>Threads <span style={{ color: "#94a3b8", fontWeight: 400 }}>by Cloud Weaver</span></span>
           </a>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <a href="#pricing" style={{ color: "#94a3b8", fontSize: 14, fontWeight: 600, textDecoration: "none", padding: "8px 16px" }}>Pricing</a>
             <a href="https://threads.cloudweavr.com" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "#f1f5f9", padding: "8px 20px", borderRadius: 8, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>Launch App</a>
             <a href="#contact" style={{ background: "linear-gradient(135deg,#00c8ff,#6366f1)", color: "#fff", padding: "8px 20px", borderRadius: 8, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>Get in Touch</a>
           </div>
@@ -128,6 +130,115 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* Pricing */}
+      <section id="pricing" style={{ padding: "80px 24px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <h2 style={{ textAlign: "center", fontSize: 36, fontWeight: 800, marginBottom: 12 }}>Simple, transparent pricing</h2>
+          <p style={{ textAlign: "center", color: "#94a3b8", marginBottom: 40, fontSize: 17 }}>Start free. Scale when you&apos;re ready.</p>
+
+          {/* Monthly / Annual toggle */}
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 12, marginBottom: 48 }}>
+            <span style={{ fontSize: 14, fontWeight: 600, color: annual ? "#94a3b8" : "#f1f5f9" }}>Monthly</span>
+            <button
+              onClick={() => setAnnual(!annual)}
+              style={{ width: 48, height: 26, borderRadius: 13, background: annual ? "linear-gradient(135deg,#00c8ff,#6366f1)" : "rgba(255,255,255,0.12)", border: "none", cursor: "pointer", position: "relative", flexShrink: 0 }}
+            >
+              <div style={{ position: "absolute", top: 3, left: annual ? 25 : 3, width: 20, height: 20, borderRadius: "50%", background: "#fff", transition: "left 0.2s" }} />
+            </button>
+            <span style={{ fontSize: 14, fontWeight: 600, color: annual ? "#f1f5f9" : "#94a3b8" }}>
+              Annual <span style={{ fontSize: 12, color: "#4ade80", fontWeight: 700 }}>Save ~17%</span>
+            </span>
+          </div>
+
+          {/* Tier cards */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, alignItems: "start" }}>
+
+            {/* Free */}
+            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 20, padding: 32 }}>
+              <div style={{ marginBottom: 24 }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Free</div>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
+                  <span style={{ fontSize: 46, fontWeight: 800 }}>$0</span>
+                  <span style={{ color: "#94a3b8", fontSize: 14 }}>/mo</span>
+                </div>
+                <p style={{ color: "#94a3b8", fontSize: 14, marginTop: 8, lineHeight: 1.5 }}>Get started with no commitment.</p>
+              </div>
+              <a href="#contact" style={{ display: "block", textAlign: "center", background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", color: "#f1f5f9", padding: "12px 24px", borderRadius: 10, fontSize: 14, fontWeight: 600, textDecoration: "none", marginBottom: 28 }}>
+                Get Started
+              </a>
+              <div style={{ fontSize: 12, color: "#64748b", marginBottom: 14, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" }}>Includes</div>
+              {["All input endpoint types", "File-based output endpoints", "Scheduled automation", "Visual field mapping"].map(f => (
+                <div key={f} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+                  <div style={{ width: 18, height: 18, borderRadius: "50%", background: "rgba(99,102,241,0.12)", border: "1px solid rgba(99,102,241,0.25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#a5b4fc" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  <span style={{ fontSize: 14, color: "#cbd5e1" }}>{f}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Pro */}
+            <div style={{ background: "rgba(99,102,241,0.06)", border: "1px solid rgba(99,102,241,0.35)", borderRadius: 20, padding: 32, position: "relative" }}>
+              <div style={{ position: "absolute", top: -13, left: "50%", transform: "translateX(-50%)", background: "linear-gradient(135deg,#00c8ff,#6366f1)", color: "#fff", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", padding: "4px 16px", borderRadius: 20, whiteSpace: "nowrap" }}>Most Popular</div>
+              <div style={{ marginBottom: 24 }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#a5b4fc", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Pro</div>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
+                  <span style={{ fontSize: 46, fontWeight: 800 }}>{annual ? "$1,000" : "$100"}</span>
+                  <span style={{ color: "#94a3b8", fontSize: 14 }}>{annual ? "/yr" : "/mo"}</span>
+                </div>
+                <p style={{ color: "#94a3b8", fontSize: 14, marginTop: 8, lineHeight: 1.5 }}>For teams connecting their first live system.</p>
+              </div>
+              <a href="#contact" style={{ display: "block", textAlign: "center", background: "linear-gradient(135deg,#00c8ff,#6366f1)", color: "#fff", padding: "12px 24px", borderRadius: 10, fontSize: 14, fontWeight: 700, textDecoration: "none", marginBottom: 28, boxShadow: "0 0 24px rgba(99,102,241,0.3)" }}>
+                Get Started
+              </a>
+              <div style={{ fontSize: 12, color: "#64748b", marginBottom: 14, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" }}>Everything in Free, plus</div>
+              {["1 live (non-file) output endpoint", "Unlimited file output endpoints", "AI-powered field transforms", "Priority support"].map(f => (
+                <div key={f} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+                  <div style={{ width: 18, height: 18, borderRadius: "50%", background: "rgba(99,102,241,0.2)", border: "1px solid rgba(99,102,241,0.4)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#a5b4fc" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  <span style={{ fontSize: 14, color: "#cbd5e1" }}>{f}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Master */}
+            <div style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 20, padding: 32 }}>
+              <div style={{ marginBottom: 24 }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Master</div>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
+                  <span style={{ fontSize: 46, fontWeight: 800 }}>{annual ? "$4,000" : "$400"}</span>
+                  <span style={{ color: "#94a3b8", fontSize: 14 }}>{annual ? "/yr" : "/mo"}</span>
+                </div>
+                {annual && <div style={{ fontSize: 12, color: "#4ade80", marginTop: 6, fontWeight: 600 }}>Or $20,000 for 3 years</div>}
+                <p style={{ color: "#94a3b8", fontSize: 14, marginTop: 8, lineHeight: 1.5 }}>For enterprise teams with complex integration needs.</p>
+              </div>
+              <a href="#contact" style={{ display: "block", textAlign: "center", background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", color: "#f1f5f9", padding: "12px 24px", borderRadius: 10, fontSize: 14, fontWeight: 600, textDecoration: "none", marginBottom: 28 }}>
+                Contact Us
+              </a>
+              <div style={{ fontSize: 12, color: "#64748b", marginBottom: 14, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" }}>Everything in Pro, plus</div>
+              {["Unlimited live output endpoints", "1 new endpoint type per year", "Dedicated account manager", "SLA & uptime guarantees"].map(f => (
+                <div key={f} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+                  <div style={{ width: 18, height: 18, borderRadius: "50%", background: "rgba(99,102,241,0.12)", border: "1px solid rgba(99,102,241,0.25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#a5b4fc" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  <span style={{ fontSize: 14, color: "#cbd5e1" }}>{f}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Reseller note */}
+          <div style={{ marginTop: 36, textAlign: "center", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 14, padding: "20px 32px" }}>
+            <span style={{ fontSize: 15, fontWeight: 700, color: "#f1f5f9" }}>Reseller / Partner Program</span>
+            <span style={{ color: "#94a3b8", fontSize: 14 }}> &mdash; 20% off all tiers for qualified resellers.&nbsp;
+              <a href="#contact" style={{ color: "#a5b4fc", textDecoration: "none", fontWeight: 600 }}>Get in touch &rarr;</a>
+            </span>
           </div>
         </div>
       </section>
