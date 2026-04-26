@@ -43,6 +43,28 @@ export async function POST(req: NextRequest) {
       throw new Error(`Resend error: ${body}`);
     }
 
+    // Auto-create a lead in Threads BOH (fire-and-forget, never blocks the email)
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const serviceKey  = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (supabaseUrl && serviceKey) {
+      fetch(`${supabaseUrl}/rest/v1/leads`, {
+        method: "POST",
+        headers: {
+          "apikey": serviceKey,
+          "Authorization": `Bearer ${serviceKey}`,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          source: "website",
+          status: "new",
+          notes: message,
+        }),
+      }).catch(() => { /* silently ignore */ });
+    }
+
     return NextResponse.json({ success: true });
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
