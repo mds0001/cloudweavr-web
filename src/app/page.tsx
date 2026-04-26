@@ -215,7 +215,7 @@ export default function Home() {
                   <span style={{ fontSize: 46, fontWeight: 800 }}>{annual ? "$4,000" : "$400"}</span>
                   <span style={{ color: "#94a3b8", fontSize: 14 }}>{annual ? "/yr" : "/mo"}</span>
                 </div>
-                {annual && <div style={{ fontSize: 12, color: "#4ade80", marginTop: 6, fontWeight: 600 }}>Or $20,000 for 3 years</div>}
+                {annual && <div style={{ fontSize: 12, color: "#4ade80", marginTop: 6, fontWeight: 600 }}>Or $10,000 for 3 years</div>}
                 <p style={{ color: "#94a3b8", fontSize: 14, marginTop: 8, lineHeight: 1.5 }}>For enterprise teams with complex integration needs.</p>
               </div>
               <a href="#contact" style={{ display: "block", textAlign: "center", background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", color: "#f1f5f9", padding: "12px 24px", borderRadius: 10, fontSize: 14, fontWeight: 600, textDecoration: "none", marginBottom: 28 }}>
