@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, message } = await req.json() as {
-      name?: string; email?: string; message?: string;
+    const { name, email, company, message } = await req.json() as {
+      name?: string; email?: string; company?: string; message?: string;
     };
 
     if (!name || !email || !message) {
@@ -31,6 +31,7 @@ export async function POST(req: NextRequest) {
             <h2 style="font-size:16px;margin:0 0 20px">New Contact Form Submission</h2>
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+            ${company ? `<p><strong>Company:</strong> ${company}</p>` : ""}
             <p style="margin-top:16px"><strong>Message:</strong></p>
             <p style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:12px;margin-top:8px">${message.replace(/\n/g, "<br>")}</p>
           </div>`,
@@ -58,6 +59,7 @@ export async function POST(req: NextRequest) {
         body: JSON.stringify({
           name,
           email,
+          company: company || null,
           source: "website",
           status: "new",
           notes: message,
