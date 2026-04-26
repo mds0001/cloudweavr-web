@@ -236,7 +236,7 @@ export default function Home() {
           {/* Reseller note */}
           <div style={{ marginTop: 36, textAlign: "center", background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 14, padding: "20px 32px" }}>
             <span style={{ fontSize: 15, fontWeight: 700, color: "#f1f5f9" }}>Reseller / Partner Program</span>
-            <span style={{ color: "#94a3b8", fontSize: 14 }}> &mdash; 20% off all tiers for qualified resellers.&nbsp;
+            <span style={{ color: "#94a3b8", fontSize: 14 }}> &mdash; Preferred pricing available for qualified resellers.&nbsp;
               <a href="#contact" style={{ color: "#a5b4fc", textDecoration: "none", fontWeight: 600 }}>Get in touch &rarr;</a>
             </span>
           </div>
